@@ -17,7 +17,7 @@
 namespace Box\Mod\Example\Console;
 
 use Pimple\Container;
-use CristianG\PimpleConsole\Command;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -64,10 +64,10 @@ class ExampleDI extends Command implements \FOSSBilling\InjectionAwareInterface
         try {
             $service->clearCache();
         } catch (\Exception $e) {
-            $this->error("An error occurred: ".$e->getMessage());
+            $output->writeln('<error>An error occurred: ' . $e->getMessage() . '</error>');
             return Command::FAILURE;
         } finally {
-            $this->info("Successfully cleared the cache.");
+            $output->writeln('<info>Successfully cleared the cache.</info>');
             return Command::SUCCESS;
         }
     }

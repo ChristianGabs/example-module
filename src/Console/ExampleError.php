@@ -18,7 +18,7 @@ namespace Box\Mod\Example\Console;
 
 use Pimple\Container;
 
-use CristianG\PimpleConsole\Command;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -56,9 +56,9 @@ class ExampleError extends Command implements \FOSSBilling\InjectionAwareInterfa
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
-            $this->error("This is your example error command");
+            $output->writeln('<error>This is your example error console</error>');
         } catch (\Exception $e) {
-            $this->error("This is your example error command triggered by an exception");
+            $output->writeln('This is your example error console triggered by an exception');
             return Command::FAILURE;
         }
         return Command::SUCCESS;

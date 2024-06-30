@@ -18,7 +18,7 @@ namespace Box\Mod\Example\Commands;
 
 use Pimple\Container;
 
-use CristianG\PimpleConsole\Command;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -55,7 +55,7 @@ class ExampleInfo extends Command implements \FOSSBilling\InjectionAwareInterfac
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->info("This is your example info");
+        $output->writeln('<info>This is your example info.</info>');
         return Command::SUCCESS;
     }
 }
