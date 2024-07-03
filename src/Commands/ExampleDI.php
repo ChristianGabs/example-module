@@ -17,11 +17,16 @@
 namespace Box\Mod\Example\Console;
 
 use Pimple\Container;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
+#[AsCommand(
+    name: 'example:clear',
+    description: 'Clear your cache for example',
+    hidden: false
+)]
 class ExampleDI extends Command implements \FOSSBilling\InjectionAwareInterface
 {
     protected ?Container $di = null;
@@ -41,16 +46,6 @@ class ExampleDI extends Command implements \FOSSBilling\InjectionAwareInterface
     public function getDi(): ?Container
     {
         return $this->di;
-    }
-
-    /**
-     * @return void
-     */
-    protected function configure(): void
-    {
-        $this->setName('example:clear');
-        $this->setDescription('Clear your cache in example');
-        parent::configure();
     }
 
     /**

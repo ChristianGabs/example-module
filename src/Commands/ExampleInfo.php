@@ -17,11 +17,16 @@
 namespace Box\Mod\Example\Commands;
 
 use Pimple\Container;
-
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'example:info',
+    description: 'Return an info message',
+    hidden: false
+)]
 class ExampleInfo extends Command implements \FOSSBilling\InjectionAwareInterface
 {
     protected ?Container $di = null;
@@ -41,16 +46,6 @@ class ExampleInfo extends Command implements \FOSSBilling\InjectionAwareInterfac
     public function getDi(): ?Container
     {
         return $this->di;
-    }
-
-    /**
-     * @return void
-     */
-    protected function configure(): void
-    {
-        $this->setName('example:info');
-        $this->setDescription('Return an info message');
-        parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
