@@ -14,7 +14,7 @@
  * with this source code in the file LICENSE
  */
 
-namespace Box\Mod\Example\Console;
+namespace Box\Mod\Example\Commands;
 
 use Pimple\Container;
 use Symfony\Component\Console\Attribute\AsCommand;
